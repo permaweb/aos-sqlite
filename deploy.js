@@ -21,11 +21,12 @@ const main = async () => {
       { name: 'Data-Protocol', value: 'ao' },
       { name: 'Type', value: 'Module' },
       { name: 'Variant', value: 'ao.TN.1' },
-      { name: 'Module-Format', value: 'wasm32-unknown-emscripten2' },
+      { name: 'Module-Format', value: 'wasm64-unknown-emscripten-draft_2024_02_15' },
       { name: 'Input-Encoding', value: 'JSON-1' },
       { name: 'Output-Encoding', value: 'JSON-1' },
-      { name: 'Memory-Limit', value: '500-mb' },
+      { name: 'Memory-Limit', value: '5-gb' },
       { name: 'Compute-Limit', value: '9000000000000' },
+      { name: ''}
     ]
   });
   console.log(receipt);
