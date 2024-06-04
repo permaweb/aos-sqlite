@@ -6,7 +6,13 @@ AOS-SQLite combines the ao operating system module and sqlite to create an ao cu
 
 AOS-SQLite Module - `GYrbbe0VbHim_7Hi6zrOpHQXrSQz07XNtwCnfbFo2I0`
 
-Run a SQLite Database with AOS
+Run a SQLite Database with AOS(WASM64)
+
+```sh
+aos my-sqlite --module=sBmq5pehE1_Ed5YBs4DGV4FMftoKwo_cVVsCpPND36Q
+```
+
+Run a SQLite Database with AOS(WASM32)
 
 ```sh
 AOS_MODULE=GYrbbe0VbHim_7Hi6zrOpHQXrSQz07XNtwCnfbFo2I0 aos my-sqlite

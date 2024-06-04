@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:3.1.14
+FROM emscripten/emsdk:3.1.59
 LABEL maintainer "tom wilson <tom@hyper.io>"
 
 # The working directory used by the base image is /src, so we can mount volumes to there
@@ -50,7 +50,7 @@ RUN npm --version
 # And, re-compile lua with "generic WASM"
 RUN cd /lua-${LUA_VERSION} && \
   make clean && \
-  make generic CC='emcc -s WASM=1 -U LUA_32BITS' 
+  make generic CC='emcc -s WASM=1 -s MEMORY64=1 -s SUPPORT_LONGJMP=1' 
 
 #############################
 ##### Install Commands ######
@@ -93,6 +93,14 @@ COPY ./src/lsqlite3.h /opt/lsqlite3.h
 COPY ./src/sqlite3.c /opt/sqlite3.c
 COPY ./src/sqlite3.h /opt/sqlite3.h
 COPY ./src/main.lua /opt/main.lua
+
+###################################
+# BUILD WeaveDrive Extension Helper
+###################################
+COPY ./src/aolibc /opt/aolibc
+RUN cd /opt/aolibc && make CC="emcc -s WASM=1 -s MEMORY64=1 -s SUPPORT_LONGJMP=1"
+
+
 RUN chmod +x /usr/local/bin/emcc-lua
 
 ENV CC 'emcc -s WASM=1'
